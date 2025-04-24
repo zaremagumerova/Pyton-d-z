@@ -1,4 +1,3 @@
 my_age=37
-print(my_age+3    
-)
+my_age=40
 print(my_age)
