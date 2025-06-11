@@ -27,7 +27,7 @@ def test_trim_positive(input_str, expected):
 
 @pytest.mark.positive
 @pytest.mark.parametrize("input_str, symbol, expected_exception", [
-     ("Gaz", "G", True),
+      ("Gaz", "G", True),
       ("Gaz", "s", False),
       ("Собака", "С", True),
       ("Кот", "д", False),
@@ -35,25 +35,22 @@ def test_trim_positive(input_str, expected):
       ("Red2", "Y", False),
       ("Red1", "1", True),
       ("Red1", "e", True)
-  
 ])
 def test_contains_positive(input_str, symbol, expected_exception):
-    assert string_utils.contains(input_str,symbol) == expected_exception
+    assert string_utils.contains(input_str, symbol) == expected_exception
 
 
 @pytest.mark.positive
 @pytest.mark.parametrize("input_str, symbol, expected_exception", [
-     ("Gaz", "G", "az"),
+      ("Gaz", "G", "az"),
       ("Gaz1", "az", "G1"),
       ("1234", "4", "123"),
       ("Котёнок", "ёнок", "Кот"),
       ("Спасибо!", "!", "Спасибо"),
       ("1+0=1", "+0", "1=1"),
-  
 ])
 def test_delete_symbol_positive(input_str, symbol, expected_exception):
-    assert string_utils.delete_symbol(input_str,symbol) == expected_exception
-
+    assert string_utils.delete_symbol(input_str, symbol) == expected_exception
 
 
 @pytest.mark.negative
@@ -77,22 +74,21 @@ def test_trim_negative(input_str, expected):
 
 
 @pytest.mark.negative
-@pytest.mark.xfail
-@pytest.mark.parametrize("input_str, symbol, expected_expection", [
-    ("123", "c", False),
-    ([], "c", False),
-    ((), "a", False),
-    ("", "Z", False)
+@pytest.mark.parametrize("input_str, symbol", [
+    ("123", "c"),
+    ([], "c"),
+    ((), "a"),
+    ("", "Z")
 ])
-def test_contains_negative(input_str, symbol, expected_expection):
-    assert string_utils.contains(input_str,symbol) == expected_exception
+def test_contains_negative(input_str, symbol):
+    assert string_utils.contains(input_str, symbol) is False
 
-@pytest.mark.negative_test
-@pytest.mark.xfail
-@pytest.mark.parametrize("input_str, symbol, expected_expection", [
+
+@pytest.mark.negative
+@pytest.mark.parametrize("input_str, symbol, expected",[
     ("ZaraVal", "", "ZaraVal"),
     ("", "v", ""),
     ("cat", "s", "cat")
     ])
-def test_delete_symbol_negative(input_str, symbol, expected_expection):
-    assert string_utils.delete_symbol(input_str,symbol) == expected_exception
+def test_delete_symbol_negative(input_str, symbol, expected):
+    assert string_utils.delete_symbol(input_str, symbol) == expected
