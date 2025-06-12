@@ -9,8 +9,9 @@ driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install())
 driver.get("http://uitestingplayground.com/dynamicid")
 
 button = driver.find_element(By.CSS_SELECTOR, 'button.btn-primary')
+sleep(1)
 button.click()
 
-sleep(5)
+sleep(3)
 
 driver.quit()
